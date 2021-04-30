@@ -1,0 +1,83 @@
+
+<table class="border-collapse  w-full table">
+  <thead>
+    <tr>
+      <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Commune
+      </th>
+      <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Nom de la station
+      </th>
+      <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">En service
+      </th>
+      <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Vélo disponible
+      </th>
+      <th class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">Place disponible
+      </th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let station of stations">
+    <tr
+      class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+      <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Commune</span>
+        {{station.commune}}
+      </td>
+      <td
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Nom de la station</span>
+        {{station.station}}
+      </td>
+      <!-- Condition pour le style de l'état du service -->
+      <td *ngIf="station.service === 'EN SERVICE'; else elseBlock "
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">En service</span>
+        <span class="rounded bg-{{colors.active}}-400 py-1 px-3 text-xs font-bold">OUI</span>
+      </td>
+      <ng-template #elseBlock>
+        <td
+          class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+          <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">En service</span>
+          <span class="rounded bg-{{colors.inactive}}-400 py-1 px-3 text-xs font-bold">NON</span>
+        </td>
+      </ng-template>
+      <!-- Condition pour le style des palces disponibles -->
+      <td *ngIf="station.veloDispo >= 10"
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Vélo disponible</span>
+        <span class="rounded {{numberColor.free}} py-1 px-3 text-xl font-bold">{{station.veloDispo}}</span>
+      </td>
+      <td *ngIf="station.veloDispo > 0 && station.veloDispo < 10 "
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+        <span
+          class="lg:hidden  absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Vélo
+          disponible</span>
+          <span class="rounded {{numberColor.feew}} py-1 px-3 text-xl font-bold">{{station.veloDispo}}</span>
+
+      </td>
+      <td *ngIf="station.veloDispo == 0"
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+        <span
+          class="lg:hidden  absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Vélo
+          disponible</span>
+        <span class="rounded {{numberColor.empty}} py-1 px-3 text-xl font-bold">{{station.veloDispo}}</span>
+      </td>
+
+      <td *ngIf="station.placeDispo>= 10"
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Place disponible</span>
+        <span class="rounded {{numberColor.free}} py-1 px-3 text-xl font-bold">{{station.placeDispo}}</span>
+      </td>
+      <td *ngIf="station.placeDispo > 0 && station.placeDispo < 10 "
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Place
+          disponible</span>
+        <span class="rounded {{numberColor.feew}} py-1 px-3 text-xl font-bold">{{station.placeDispo}}</span>
+      </td>
+      <td *ngIf="station.placeDispo == 0"
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+        <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Place
+          disponible</span>
+        <span class="rounded {{numberColor.empty}} py-1 px-3 text-xl font-bold">{{station.placeDispo}}</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

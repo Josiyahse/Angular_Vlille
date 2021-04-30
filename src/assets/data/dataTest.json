@@ -1,0 +1,17 @@
+[
+      {
+        "commune" :"Lille",
+        "ttqsd": "scdxscxs",
+        "station" : "Croix",
+        "service" : "EN SERVICE",
+        "veloDispo": 0,
+        "placeDispo" : 3
+      },
+      {
+        "commune" :"Lille",
+        "station" : "Hôpitale",
+        "service" : "HORS SERVICE",
+        "veloDispo": 2,
+        "placeDispo" : 15
+      }
+  ]

@@ -1,0 +1,16 @@
+.activePlace{
+  color: green;
+}
+
+.warningPlace{
+  color: orange;
+}
+
+.inactivePlace{
+  color: red;
+}
+
+.table{
+  margin:50px;
+  width:90%;
+}
